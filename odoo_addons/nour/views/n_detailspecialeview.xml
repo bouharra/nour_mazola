@@ -1,0 +1,29 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="n_detailspeciale_form">
+      <field name="name">Cotisation Spéciale Form</field>
+      <field name="model">nour.n_detailspeciale</field>
+      <field name="arch" type="xml">
+      <form>
+            <group>
+            <group>
+            <field name="n_speciale_id" string="Propriétaire" readonly="1" class="no_pointer"/>
+           <field name="s_reste" string="Reste"/>
+            </group>
+
+            <group class="custom_bordered_group">
+            <field name="s_ds_date" string="Année"/>
+            <field name="s_ds_mois" string="Mois"/>
+            <field name="s_ds_montant" string="Montant versé"/>
+            </group>
+
+            </group>
+      </form>
+      </field>
+    </record>
+  </data>
+</odoo>

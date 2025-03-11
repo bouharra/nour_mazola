@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--    <record id="action_report_recu" model="ir.actions.report">-->
+<!--        <field name="name">Recu</field>-->
+<!--        <field name="model">nour.n_cotisation</field>-->
+<!--        <field name="report_name">nour.recu_report</field>  &lt;!&ndash; Ce nom doit être correct &ndash;&gt;-->
+<!--        <field name="report_type">qweb-pdf</field>-->
+<!--    </record>-->
+  <template id="recu_report">
+    <t t-call="web.html_container">
+        <h3 style="text-align: center; font-size: 28px; font-weight: bold;"><u>RECU</u></h3>
+        <t t-foreach="docs" t-as="doc">
+            <p style="text-align: center; font-size: 24px; margin-bottom: 20px;"> MOIS : <t t-esc="'{}/{}'.format(doc.selected_value, doc.n_annee)" /></p>
+            <br/>
+
+            <p style="margin-left: 60px; font-size: 24px; margin-bottom: 20px;"> Nom : <t t-esc="doc.n_nom"/></p>
+            <p style="margin-left: 60px; font-size: 24px; margin-bottom: 20px;"> Appartement : <t t-esc="doc.n_code"/></p>
+            <br/><br/>
+            <div class="page">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="padding-left: 60px; font-size: 20px;">Mois</th>
+                            <th style="padding-left: 100px; font-size: 20px;">Montant</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Afficher la ligne uniquement si dd1 == selected_value -->
+                        <t t-if="doc.dd1 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">JAN</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n1"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd2 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">FEV</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n2"/></td>  </tr>
+                        </t>
+
+                        <t t-if="doc.dd3 == doc.selected_value">
+                            <tr>  <td style="padding-left: 60px; font-size: 20px;">MAR</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n3"/></td>   </tr>
+                        </t>
+
+                        <t t-if="doc.dd4 == doc.selected_value">
+                            <tr>  <td style="padding-left: 60px; font-size: 20px;">AVR</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n4"/></td>   </tr>
+                        </t>
+
+                        <t t-if="doc.dd5 == doc.selected_value">
+                            <tr>  <td style="padding-left: 60px; font-size: 20px;">MAI</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n5"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd6 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">JUN</td>  <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n6"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd7 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">JUL</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n7"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd8 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">AUT</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n8"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd9 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">SEP</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n9"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd10 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">OCT</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n10"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd11 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">NOV</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n11"/></td> </tr>
+                        </t>
+
+                        <t t-if="doc.dd12 == doc.selected_value">
+                            <tr> <td style="padding-left: 60px; font-size: 20px;">DEC</td> <td style="padding-left: 100px; font-size: 20px;"><t t-esc="doc.n12"/></td> </tr>
+                        </t>
+
+                    </tbody>
+                </table>
+            </div>
+            <br/><br/>
+            <t t-if="doc.selected_value=='1'">
+            <p style="margin-left: 100px; font-size: 20px;"> Total :<t t-esc="doc.v1"/></p>
+            </t>
+            <t t-if="doc.selected_value=='2'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v2"/></p>
+            </t>
+            <t t-if="doc.selected_value=='3'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v3"/></p>
+            </t>
+            <t t-if="doc.selected_value=='4'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v4"/></p>
+            </t>
+            <t t-if="doc.selected_value=='5'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v5"/></p>
+            </t>
+            <t t-if="doc.selected_value=='6'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v6"/></p>
+            </t>
+            <t t-if="doc.selected_value=='7'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v7"/></p>
+            </t>
+            <t t-if="doc.selected_value=='8'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v8"/></p>
+            </t>
+            <t t-if="doc.selected_value=='9'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v9"/></p>
+            </t>
+            <t t-if="doc.selected_value=='10'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v10"/></p>
+            </t>
+            <t t-if="doc.selected_value=='11'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v11"/></p>
+            </t>
+            <t t-if="doc.selected_value=='12'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v12"/></p>
+            </t>
+            <t t-if="doc.selected_value=='13'">
+            <p style="margin-left: 100px; font-size: 20px;" >Total :<t t-esc="doc.v13"/></p>
+            </t>
+
+        </t>
+    </t>
+</template>
+
+
+</odoo>

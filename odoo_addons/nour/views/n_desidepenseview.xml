@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="n_desidepense_list">
+      <field name="name">n_desidepense List</field>
+      <field name="model">nour.n_desidepense</field>
+      <field name="arch" type="xml">
+        <list default_order="d_ordre">
+            <field name="d_ordre" string="Ordre" force_save="1"/>
+             <field name="d_desidepense" string="Dépense"/>
+             <field name="dp_desiobservation" string="Observation"/>
+
+
+        </list>
+      </field>
+    </record>
+
+
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="n_desidepense_form">
+      <field name="name">Resident Form</field>
+      <field name="model">nour.n_desidepense</field>
+      <field name="arch" type="xml">
+      <form>
+        <group>
+
+            <field name="d_desidepense" string="Dépense" force_save="1"/>
+             <field name="dp_desiobservation" string="Observation"/>
+            <field name="d_ordre" string="Ordre" force_save="1"/>
+        </group>
+      </form>
+      </field>
+</record>
+
+
+
+   </data>
+</odoo>
+

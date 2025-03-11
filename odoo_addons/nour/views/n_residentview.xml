@@ -1,0 +1,105 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="n_resident_list">
+      <field name="name">Resident List</field>
+      <field name="model">nour.n_resident</field>
+      <field name="arch" type="xml">
+        <list> <!-- Utilisation de <tree> au lieu de <list> -->
+          <field name="n_code" widget="char" size="10"/>
+          <field name="n_nom" widget="char" size="30"/>
+          <field name="n_coti_an" widget="char" size="20"/>
+           <field name="somme_reste2" sum="S_r_cot" string="Reste Cotisations" widget="char" size="20"/>
+            <field name="somme_s_reste" sum="S_r_spe" string="Reste Cot.Spéciale" widget="char" size="20"/>
+            <field name="somme_s_RR" sum="S_r_tot" string="Total à verser" widget="char" size="20"/>
+
+        </list>
+      </field>
+    </record>
+
+
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="n_resident_form">
+      <field name="name">Resident Form</field>
+      <field name="model">nour.n_resident</field>
+      <field name="arch" type="xml">
+      <form readonly="1">
+
+ <header>
+    <button name="%(action_report_resident)s" string="Imprimer Fiche" type="action" class="btn-primary"/>
+
+</header>
+
+            <group>
+            <div class="row">
+
+              <div class="col-md-6">
+              <group>
+              <field name="n_code" readonly="1"/>
+              <field name="n_nom" readonly="1"/>
+              <field name="n_coti_an" readonly="1"/>
+              <field name="n_telephone" readonly="1"/>
+              </group>
+              </div>
+
+              <div class="col-md-6">
+              <group>
+              <field name="somme_cotisation2" string="Cotisations"/>
+              <field name="somme_reste2" string="Reste"/>
+              <field name="somme_s_recu" string="Cotisations spéciales reçues"/>
+              <field name="somme_s_reste" string="Reste Cotisations spéciales"/>
+              <field name="somme_s_RR" string="Total du" style="background-color: #FFDD57; color: black;font-size: 20px; width:120px"/>
+              </group>
+              </div>
+            </div>
+            </group>
+          
+          <notebook readonly="1">
+              <page string="Cotisations">
+
+                <field name="n_cotisation_ids" readonly="1">
+                <list  add="false"  default_order="n_annee asc" style="max-height: 300px; overflow-y: auto;">
+
+                    <field name="n_annee" string="Année"/>
+                    <field name="total_coti" string="Total" sum="total"/>
+                    <field name="reste_coti" string="Reste" sum="Reste"/>
+
+                    <field name="n1" string="JAN"/>
+                    <field name="n2" string="FEV"/>
+                    <field name="n3" string="MAR"/>
+                    <field name="n4" string="AVR"/>
+                    <field name="n5" string="MAI"/>
+                    <field name="n6" string="JUN"/>
+                    <field name="n7" string="JUL"/>
+                    <field name="n8" string="AUT"/>
+                    <field name="n9" string="SEP"/>
+                    <field name="n10" string="OCT"/>
+                    <field name="n11" string="NOV"/>
+                    <field name="n12" string="DEC"/>
+                </list>
+                </field>
+              </page>
+        <page string="speciale">
+                <field name="n_speciale_ids" colspan="4" nolabel="1" readonly="1">
+                                <list>
+                                    <field name="n_code" string="Code" style="width: 200px; text-align: center;"/>
+                                    <field name="n_nom" string="nom" style="width: 200px; text-align: center;"/>
+                                    <field name="s_designation" string="Désignation" filter_domain="[('cotisation', '>', self)]"/>
+                                    <field name="s_apayer" string="Fixée à   " style="width: 100px; text-align: center;"/>
+                                    <field name="s_totalverse" string="Montant Reçu" sum="Total Reçu" style="width: 100px; text-align: center;"/>
+                                     <field name="s_reste" string="Reste" sum="Total Reste" style="width: 200px; text-align: center;"/>
+                                    <field name="n_obs_speciale" string="Observation" style="width: 200px; text-align: center;"/>
+                                </list>
+                </field>
+        </page>
+    </notebook>
+       </form>
+      </field>
+    </record>
+
+
+
+   </data>
+</odoo>
+

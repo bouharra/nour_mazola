@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="n_depense_list">
+      <field name="name">Depense List</field>
+      <field name="model">nour.n_depense</field>
+      <field name="arch" type="xml">
+        <list> <!-- Utilisation de <tree> au lieu de <list> -->
+
+           <field name="d_desidepense" string="Nom" options="{'auto_save': True}"/>
+            <field name="dp1" string="JAN"/>
+            <field name="dp2" string="FEV"/>
+            <field name="dp3" string="MAR"/>
+            <field name="dp4" string="AVR"/>
+            <field name="dp5" string="MAI"/>
+            <field name="dp6" string="JUN"/>
+            <field name="dp7" string="JUL"/>
+            <field name="dp8" string="AUT"/>
+            <field name="dp9" string="SEP"/>
+            <field name="dp10" string="OCT"/>
+            <field name="dp11" string="NOV"/>
+            <field name="dp12" string="DEC"/>
+
+        </list>
+      </field>
+    </record>
+
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="n_depense_form">
+      <field name="name">Depense Form</field>
+      <field name="model">nour.n_depense</field>
+      <field name="arch" type="xml">
+        <form string="DEPENSES">
+
+        <group>
+          <group>
+            <field name="n_desidepense_id" options="{'create': True}" string="Nom"/>
+          </group>
+
+           <group>
+            <field name="dp1" string="JAN" />
+            <field name="dp2" string="FEV" />
+            <field name="dp3" string="MAR" />
+            <field name="dp4" string="AVR"/>
+            <field name="dp5" string="MAI"/>
+            <field name="dp6" string="JUN"/>
+            <field name="dp7" string="JUL"/>
+            <field name="dp8" string="AUT"/>
+            <field name="dp9" string="SEP"/>
+            <field name="dp10" string="OCT"/>
+            <field name="dp11" string="NOV"/>
+            <field name="dp12" string="DEC"/>
+            </group>
+
+
+        </group>
+        </form>
+      </field>
+    </record>
+
+   </data>
+</odoo>

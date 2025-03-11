@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nour_n_resident,nour.n_resident,model_nour_n_resident,base.group_user,1,1,1,1
+access_nour_n_an,nour.n_an,model_nour_n_an,base.group_user,1,1,1,1
+access_nour_n_cotisation,nour.n_cotisation,model_nour_n_cotisation,base.group_user,1,1,1,1
+access_nour_n_depense,nour.n_depense,model_nour_n_depense,base.group_user,1,1,1,1
+access_nour_n_residence,nour.n_residence,model_nour_n_residence,base.group_user,1,1,1,1
+access_nour_n_desidepense,nour.n_desidepense,model_nour_n_desidepense,base.group_user,1,1,1,1
+access_nour_n_speciale,nour.n_speciale,model_nour_n_speciale,base.group_user,1,1,1,1
+access_nour_n_desispeciale,nour.n_desispeciale,model_nour_n_desispeciale,base.group_user,1,1,1,1
+access_nour_n_detailspeciale,nour.n_detailspeciale,model_nour_n_detailspeciale,base.group_user,1,1,1,1
+access_nour_n_mois,nour.n_mois,model_nour_n_mois,base.group_user,1,1,1,1
+access_nour_n_help,nour.n_help,model_nour_n_help,base.group_user,1,0,0,0

@@ -1,0 +1,6 @@
+.bg-highlight {
+    background-color: #E0FEF8 !important;  /* Couleur de fond légère */
+}
+.no_pointer {
+    cursor: default !important;
+}

@@ -1,0 +1,128 @@
+<odoo>
+  <data>
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX actions XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx -->
+<!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="annee_action_window">
+      <field name="name">Situation Annuelle</field>
+      <field name="res_model">nour.n_an</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+    </record>
+
+<record model="ir.actions.act_window" id="n_resident_action_window">
+      <field name="name">Resident Window</field>
+      <field name="res_model">nour.n_resident</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+<!--      <field name="view_id" ref="n_resident_list"/>-->
+ </record>
+      
+<!--<record model="ir.actions.act_window" id="n_resident2_action_window_Factice">-->
+<!--      <field name="name">Resident Window</field>-->
+<!--      <field name="res_model">nour.n_resident</field>-->
+<!--      <field name="view_mode">list,form</field> &lt;!&ndash; Utilisation de tree pour la vue liste &ndash;&gt;-->
+
+<!--    <field name="view_ids" eval="[-->
+<!--        (5, 0, 0),-->
+<!--        (0, 0, {'view_mode': 'list', 'view_id': ref('n_resident2_list')}),-->
+<!--        (0, 0, {'view_mode': 'form', 'view_id': ref('n_resident2_form')})-->
+<!--    ]"/>-->
+<!--</record>-->
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.report" id="action_report_globale">
+        <field name="name">Situation Globale</field>
+        <field name="model">nour.n_residence</field>
+        <field name="report_name">nour.globale_report</field>  <!-- Ce nom doit être correct -->
+        <field name="report_type">qweb-pdf</field>
+    </record>
+
+ <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="residence_action_window">
+      <field name="name">CAISSE</field>
+      <field name="res_model">nour.n_residence</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+    </record>
+
+<!-- actions opening views on models -->
+
+
+ <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="n_depense_action_window">
+      <field name="name">Depense</field>
+      <field name="res_model">nour.n_desidepense</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+    </record>
+
+  <record model="ir.actions.act_window" id="action_help">
+        <field name="name">Help - Description</field>
+        <field name="res_model">nour.n_help</field>
+        <field name="view_mode">form</field>
+    </record>
+
+<record model="ir.actions.act_window" id="annee_action_window">
+      <field name="name">Situation Annuelle</field>
+      <field name="res_model">nour.n_an</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+    </record>
+
+    <!-- Action pour ouvrir les vues -->
+    <record model="ir.actions.act_window" id="mois_action_window">
+      <field name="name">Situation Mensuelle</field>
+      <field name="res_model">nour.n_mois</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+      <!-- menu categories -->
+     </record>
+
+   <record model="ir.actions.act_window" id="annee_action_window">
+      <field name="name">Situation Annuelle</field>
+      <field name="res_model">nour.n_an</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+    </record>
+
+
+    <!-- Action pour ouvrir les vues -->
+    <record model="ir.actions.act_window" id="mois_action_window">
+      <field name="name">Situation Mensuelle</field>
+      <field name="res_model">nour.n_mois</field>
+      <field name="view_mode">list,form</field> <!-- Utilisation de tree pour la vue liste -->
+      <!-- menu categories -->
+     </record>
+
+      <!--   &lt;!&ndash; Action du rapport &ndash;&gt;-->
+   <record model="ir.actions.report" id="action_report_resident">
+        <field name="name">Rapport Resident</field>
+        <field name="model">n_resident</field> <!-- Assurez-vous que c'est le bon modèle -->
+        <field name="report_name">resident_report</field>
+        <field name="report_type">qweb-pdf</field>
+    </record>
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx -->
+    <record id="action_report_annuelle" model="ir.actions.report">
+        <field name="name">Situation Annuelle</field>
+        <field name="model">nour.n_an</field>
+        <field name="report_name">nour.annuelle_report</field>  <!-- Ce nom doit être correct -->
+        <field name="report_type">qweb-pdf</field>
+    </record>
+
+    <record id="action_report_mensuelle" model="ir.actions.report">
+        <field name="name">Situation Mensuelle</field>
+        <field name="model">nour.n_an</field>
+        <field name="report_name">nour.mensuelle_report</field>  <!-- Ce nom doit être correct -->
+        <field name="report_type">qweb-pdf</field>
+    </record>
+
+    <record id="action_report_recu" model="ir.actions.report">
+        <field name="name">Recu</field>
+        <field name="model">nour.n_cotisation</field>
+        <field name="report_name">nour.recu_report</field>  <!-- Ce nom doit être correct -->
+        <field name="report_type">qweb-pdf</field>
+    </record>
+
+    <record id="action_report_resident" model="ir.actions.report">
+        <field name="name">Rapport Resident</field>
+        <field name="model">nour.n_resident</field>
+        <field name="report_name">nour.resident_report</field>  <!-- Ce nom doit être correct -->
+        <field name="report_type">qweb-pdf</field>
+    </record>
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx -->
+
+   </data>
+   </odoo>

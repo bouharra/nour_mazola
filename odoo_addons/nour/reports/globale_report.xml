@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+  <template id="globale_report">
+    <t t-call="web.html_container">
+
+        <h3 style="text-align: center; font-size: 28px; font-weight: bold;"><u>C A I S S E</u></h3>
+        <t t-foreach="docs" t-as="doc">
+           <p style="text-align: center; font-size: 24px; margin-bottom: 20px;"> SOLDE : <t t-esc="'{:' '.2f}'.format(doc.s_solde)"/></p>
+        <br/>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Designation : <t t-esc="doc.n_designation"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Adresse : <t t-esc="doc.n_adresse"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Solde initial: <t t-esc="'{:' '.2f}'.format(doc.n_initial)"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Observation : <t t-esc="doc.n_observation"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Cotisations normales recues : <t t-esc="'{:' '.2f}'.format(doc.s_cotisations)"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Cotisations speciales recues : <t t-esc="'{:' '.2f}'.format(doc.s_speciale)"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Total des depenses : <t t-esc="'{:' '.2f}'.format(doc.s_depenses)"/></p>
+            <br/><br/>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Cotisations normales a percevoir: <t t-esc="'{:' '.2f}'.format(doc.s_reste)"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Cotisations speciales a percevoir : <t t-esc="'{:' '.2f}'.format(doc.s_r_speciale)"/></p>
+
+
+            <!-- Tableau des cotisations -->
+            <br/><br/>
+<h4 style="margin-left: 20px; font-size: 20px; font-weight: bold;"><u>DETAIL </u></h4>
+          <table style="margin-left: 20px;" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 150px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">ANNEE</th>
+                        <th style="width: 150px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">COTISATIONS</th>
+                        <th style="width: 150px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">SPECIALE</th>
+                        <th style="width: 150px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">DEPENSES</th>
+                        <th style="width: 150px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">RESTE</th>
+                        <th style="width: 150px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">SOLDE</th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-if="doc.n_an_ids"> <!-- Vérification si la liste existe -->
+                       <t t-foreach="sorted(doc.n_an_ids, key=lambda c: c.n_annee)" t-as="annee">
+                            <tr>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="annee.n_annee"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="annee.somme_cotisation or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="annee.somme_speciale or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="annee.somme_depense or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="annee.somme_reste or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="annee.solde or '0'"/></td>
+
+                            </tr>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <tr>
+                            <td colspan="5" class="text-center">Aucune cotisation enregistrée</td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+
+        </t>
+    </t>
+</template>
+</odoo>

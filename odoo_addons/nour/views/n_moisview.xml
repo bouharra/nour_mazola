@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+     <data>
+    <record id="view_mois_list" model="ir.ui.view">
+        <field name="name">mois.list</field>
+        <field name="model">nour.n_mois</field>
+        <field name="arch" type="xml">
+             <list default_order="n_annee DESC, d_mois DESC">
+                <field name="n_an_id" string="ANNEE"/>
+                <field name="d_mois" string="MOIS"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_mois_form" model="ir.ui.view">
+        <field name="name">mois.form</field>
+        <field name="model">nour.n_mois</field>
+        <field name="arch" type="xml">
+            <form string="Formulaire T1">
+                <sheet>
+                    <group>
+                       <field name="n_an_id" string="ANNEE"/>
+                       <field name="d_mois" string="MOIS"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+<!--      <menuitem name="Mois" id="nour_mois" parent="annee_menu" action="mois_action_window"/>-->
+
+
+ </data>
+</odoo>
+

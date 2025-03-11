@@ -1,0 +1,11 @@
+# Ignorer les fichiers temporaires et les archives
+*.tar
+*.txt
+
+
+# Ignorer les dossiers d'IDE
+.idea/
+
+# Ignorer les fichiers spécifiques
+attente/
+main.py

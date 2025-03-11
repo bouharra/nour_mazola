@@ -1,0 +1,90 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="n_residence_list">
+      <field name="name">Residence List</field>
+      <field name="model">nour.n_residence</field>
+      <field name="arch" type="xml">
+      <list> <!-- Utilisation de <tree> au lieu de <list> -->
+            <field name="n_designation" string="Désignation"/>
+            <field name="n_adresse" string="Adresse"/>
+      </list>
+      </field>
+    </record>
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="residence_form">
+      <field name="name">RESIDENCE</field>
+      <field name="model">nour.n_residence</field>
+      <field name="arch" type="xml">
+      <form>
+          <header>
+          <button name="%(action_report_globale)s" string="CAISSE" type="action" class="btn-primary"/>
+          <field name="n_logo" widget="image" class="oe_avatar"/>
+          </header>
+          <group>
+    <div class="row">
+    <div class="col-md-4">
+          <group>
+           <field name="n_designation" string="Désignation" readonly="1"/>
+           <field name="n_adresse" string="Adresse"/>
+           <field name="n_initial" string="Solde initial"/>
+           <field name="n_observation" string="Observation"/>
+          </group>
+    </div>
+    <div class="col-md-4">
+          <group>
+          <field name="s_cotisations" string="Cotisations normales reçues"/>
+          <field name="s_speciale" string="Cotisations spéciales reçues"/>
+          <field name="s_depenses" string="Total des depenses"/>
+          <field name="s_solde" string="SOLDE" style="color:black; background-color: #FFDD57; font-size: 26px;"/>
+          </group>
+    </div>
+    <div class="col-md-4">
+          <group>
+          <field name="s_reste" string="Cotisations normales à percevoir"/>
+          <field name="s_r_speciale" string="Cotisations spéciales à percevoir "/>
+           </group>
+   </div>
+   </div>
+          </group>
+      <notebook>
+          <page string="CAISSE">
+              <field name="n_an_ids" readonly="1">
+                <list default_order="n_annee" style="width: 10px;">
+                    <field name="n_annee" style="text-align: center" string="Années" />
+                    <field name="somme_cotisation" style="text-align: center" sum="Cotisation" string="Cotisations"/>
+                    <field name="somme_speciale" style="text-align: center" sum="Special" string="Spécial"/>
+                    <field name="somme_depense" style="text-align: center" sum="Depenses" string="Depenses"/>
+                    <field name="somme_reste" style="text-align: center" sum="Reste" string="Impayés"/>
+                    <field name="solde" style="text-align: center" sum="solde" stringe="Soldes" />
+                </list>
+              </field>
+          </page>
+      </notebook>
+      </form>
+      </field>
+    </record>
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx -->
+
+
+    <!-- Top menu item -->
+    <menuitem name="N o u r" id="annee_menu"/>
+    <menuitem name="Saisie" id="m_saisie" parent="annee_menu" sequence="5"/>
+    <menuitem name="Situations" id="m_situation" parent="annee_menu" sequence="10"/>
+    <menuitem name="Paramétrage" id="m_parametrage" parent="annee_menu" sequence="15"/>
+    <menuitem name="Help" id="m_help" parent="annee_menu" action="action_help" sequence="20"/>
+    <!-- menu categories -->
+    <menuitem name="Cotisations et Dépenses" id="nour_annee" parent="m_saisie" action="annee_action_window" sequence="5"/>
+
+
+<!-- menu categories -->
+    <menuitem name="Caisse" id="nour_residence" parent="m_situation" action="residence_action_window" sequence="5"/>
+    <menuitem name="Residents" id="nour_n_resident" parent="m_situation" action="n_resident_action_window" sequence="10"/>
+<!--    <menuitem name="Cotisation" id="syndic_cotisation" parent="syndic_menu"/>-->
+
+    <menuitem name="Residents" id="nour_n_resident2" parent="m_parametrage" action="n_resident2_action_window" sequence="5"/>
+    <menuitem name="Depenses" id="nour_n_desidepense" parent="m_parametrage" action="n_depense_action_window" sequence="10"/>
+
+
+    </data>
+</odoo>
+

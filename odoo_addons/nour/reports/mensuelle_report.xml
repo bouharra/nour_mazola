@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+<!--    <record id="action_report_mensuelle" model="ir.actions.report">-->
+<!--        <field name="name">Situation Mensuelle</field>-->
+<!--        <field name="model">nour.n_an</field>-->
+<!--        <field name="report_name">nour.mensuelle_report</field>  &lt;!&ndash; Ce nom doit être correct &ndash;&gt;-->
+<!--        <field name="report_type">qweb-pdf</field>-->
+<!--    </record>-->
+  <template id="mensuelle_report">
+    <t t-call="web.html_container">
+        <h3 style="text-align: center; font-size: 28px; font-weight: bold;"><u>Situation Mensuelle</u></h3>
+
+    </t>
+</template>
+</odoo>

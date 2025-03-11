@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+    <record id="view_help" model="ir.ui.view">
+    <field name="name">Help Form</field>
+    <field name="model">nour.n_help</field>
+    <field name="arch" type="xml">
+        <form string="Help - Description de l'application">
+            <sheet>
+                <group>
+
+                    <div>
+                        <p>Voici la description de l'application...</p>
+                    </div>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+  </data>
+</odoo>

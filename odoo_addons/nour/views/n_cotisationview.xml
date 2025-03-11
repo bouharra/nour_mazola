@@ -1,0 +1,130 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="n_cotisation_list">
+      <field name="name">cotisation List</field>
+      <field name="model">nour.n_cotisation</field>
+      <field name="arch" type="xml">
+        <list> <!-- Utilisation de <tree> au lieu de <list> -->
+
+            <field name="n_code" string="Code"/>
+            <field name="n_nom" string="nom"/>
+            <field name="n1" string="JAN"/>
+            <field name="n2" string="FEV"/>
+            <field name="n3" string="MAR"/>
+            <field name="n4" string="AVR"/>
+            <field name="n5" string="MAI"/>
+            <field name="n6" string="JUN"/>
+            <field name="n7" string="JUL"/>
+            <field name="n8" string="AUT"/>
+            <field name="n9" string="SEP"/>
+            <field name="n10" string="OCT"/>
+            <field name="n11" string="NOV"/>
+            <field name="n12" string="DEC"/>
+
+        </list>
+      </field>
+    </record>
+
+
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="n_cotisation_form">
+      <field name="name">cotisation Form</field>
+      <field name="model">nour.n_cotisation</field>
+      <field name="arch" type="xml">
+        <form string="XXXX">
+            <header>
+            <group>
+            <field name="selected_value" string="Imprimer Reçu de : " widget="selection"/>
+            <button name="%(action_report_recu)d" string="Imprimer" type="action" class="btn-primary"/>
+            </group>
+            </header>
+
+            <group>
+
+
+            <div class="row">
+             <group>
+            <field name="n_annee" string="Annèe" readonly="1"/>
+            <field name="n_resident_id" string="Nom" readonly="1"/>
+            <field name="n_code" string="Code" readonly="1"/>
+            </group>
+            <div class="col-md-3">
+             <group>
+            <field name="da1" string="Année" options="{'auto_save': True}"/>
+            <field name="da2" string="Année" options="{'auto_save': True}"/>
+            <field name="da3" string="Année" options="{'auto_save': True}"/>
+            <field name="da4" string="Année" options="{'auto_save': True}"/>
+            <field name="da5" string="Année" options="{'auto_save': True}"/>
+            <field name="da6" string="Année" options="{'auto_save': True}"/>
+            <field name="da7" string="Année" options="{'auto_save': True}"/>
+            <field name="da8" string="Année" options="{'auto_save': True}"/>
+            <field name="da9" string="Année" options="{'auto_save': True}"/>
+            <field name="da10" string="Année" options="{'auto_save': True}"/>
+            <field name="da11" string="Année" options="{'auto_save': True}"/>
+            <field name="da12" string="Année" options="{'auto_save': True}"/>
+            </group>
+            </div>
+
+            <div class="col-md-3">
+            <group>
+            <field name="dd1" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd2" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd3" string="payé en" options="{'auto_save': True}"/>
+            <field name="dd4" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd5" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd6" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd7" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd8" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd9" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd10" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd11" string="Payé en" options="{'auto_save': True}"/>
+            <field name="dd12" string="Payé en" options="{'auto_save': True}"/>
+            </group>
+            </div>
+
+            <div class="col-md-3">
+            <group>
+            <field name="n1" string="JAN" options="{'auto_save': True}" />
+            <field name="n2" string="FEV" options="{'auto_save': True}"/>
+            <field name="n3" string="MAR" options="{'auto_save': True}"/>
+            <field name="n4" string="AVR" options="{'auto_save': True}"/>
+            <field name="n5" string="MAI" options="{'auto_save': True}"/>
+            <field name="n6" string="JUN" options="{'auto_save': True}"/>
+            <field name="n7" string="JUL" options="{'auto_save': True}"/>
+            <field name="n8" string="AUT" options="{'auto_save': True}"/>
+            <field name="n9" string="SEP" options="{'auto_save': True}"/>
+            <field name="n10" string="OCT" options="{'auto_save': True}"/>
+            <field name="n11" string="NOV" options="{'auto_save': True}"/>
+            <field name="n12" string="DEC" options="{'auto_save': True}"/>
+
+            </group>
+            </div>
+             <div class="col-md-3">
+            <group>
+
+            <field name="v1" string="Reçu en JAN"/>
+            <field name="v2" string="Reçu en FEV"/>
+            <field name="v3" string="Reçu en MAR"/>
+            <field name="v4" string="Reçu en AVR"/>
+            <field name="v5" string="Reçu en MAI"/>
+            <field name="v6" string="Reçu en JUN"/>
+            <field name="v7" string="Reçu en JUL"/>
+            <field name="v8" string="Reçu en AUT"/>
+            <field name="v9" string="Reçu en SEP"/>
+            <field name="v10" string="Reçu en OCT"/>
+            <field name="v11" string="Reçu en NOV"/>
+            <field name="v12" string="Reçu en DEC"/>
+<!--            <field name="v13" string="Reliquat"/>-->
+            </group>
+            </div>
+           <group> <field name="n0" string="Déja Reçu: " options="{'auto_save': True}"/></group>
+         </div>
+
+        </group>
+        </form>
+      </field>
+    </record>
+   </data>
+</odoo>

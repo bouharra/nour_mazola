@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+<!--    <record id="action_report_resident" model="ir.actions.report">-->
+<!--        <field name="name">Rapport Resident</field>-->
+<!--        <field name="model">nour.n_resident</field>-->
+<!--        <field name="report_name">nour.resident_report</field>  &lt;!&ndash; Ce nom doit être correct &ndash;&gt;-->
+<!--        <field name="report_type">qweb-pdf</field>-->
+<!--    </record>-->
+  <template id="resident_report">
+    <t t-call="web.html_container">
+        <h3 style="text-align: center; font-size: 28px; font-weight: bold;"><u>Fiche de suivi</u></h3>
+        <t t-foreach="docs" t-as="doc">
+        <br/><br/><br/>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Nom : <t t-esc="doc.n_nom"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Appartement : <t t-esc="doc.n_code"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Valeur Cotisation: <t t-esc="doc.n_coti_an"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Cotisations : <t t-esc="doc.somme_cotisation2"/></p>
+            <p style="margin-left: 20px; font-size: 20px; margin-bottom: 20px;"> Speciale Reste : <t t-esc="doc.somme_s_reste"/></p>
+            <!-- Tableau des cotisations -->
+            <br/><br/>
+            <h4 style="margin-left: 20px; font-size: 20px; font-weight: bold;"><u>COTISATION MENSUELLES</u></h4>
+            <table style="margin-left: 20px;" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">Annee</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">JAN</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">FEV</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">MAR</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">AVR</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">MAI</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">JUN</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">JUL</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">AUT</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">SEP</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">OCT</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">NOV</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">DEC</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">Total</th>
+                        <th style="width: 60px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">Reste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-if="doc.n_cotisation_ids"> <!-- Vérification si la liste existe -->
+                       <t t-foreach="sorted(doc.n_cotisation_ids, key=lambda c: c.n_annee)" t-as="cotisation">
+                            <tr>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n_annee"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n1 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n2 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n3 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n4 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n5 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n6 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n7 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n8 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n9 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n10 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n11 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.n12 or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.total_coti or '0'"/></td>
+                                <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;"><t t-esc="cotisation.reste_coti or '0'"/></td>
+                            </tr>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <tr>
+                            <td colspan="5" class="text-center">Aucune cotisation enregistrée</td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <br/><br/>
+            <h4 style="margin-left: 20px; font-size: 20px; font-weight: bold;"><u>COTISATION SPECIALES</u></h4>
+                <table style="margin-left: 20px;" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: 200px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">Designation</th>
+                            <th style="width: 100px; font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-if="doc.n_speciale_ids">
+                           <t t-foreach="doc.n_speciale_ids" t-as="speciale">
+                                <tr>
+                                    <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">
+                                        <t t-esc="speciale.s_designation"/>
+                                    </td>
+                                    <td style="font-size: 18px; font-family: 'Arial'; text-align: center; border: 1px solid black; padding: 0px;">
+                                        <t t-esc="speciale.s_totalverse or '0'"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <tr>
+                                <td colspan="2" class="text-center">Aucune cotisation spéciale enregistrée</td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+
+
+        </t>
+    </t>
+</template>
+</odoo>

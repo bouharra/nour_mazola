@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="n_speciale_list">
+      <field name="name">n_speciale_List</field>
+      <field name="model">nour.n_speciale</field>
+      <field name="arch" type="xml">
+        <list> <!-- Utilisation de <tree> au lieu de <list> -->
+        <field name="n_annee" string="an"/>
+        <field name="n_resident_id" string="resident"/>
+        <field name="n_code" string="code"/>
+        <field name="n_desispeciale_id" string="desi"/>
+        <field name="s_apayer" string="a payer"/>
+        <field name="s_totalverse" string="rrrr"/>
+        <field name="s_reste" string="reste"/>
+        <field name="n_obs_speciale" string="obs"/>
+        </list>
+      </field>
+    </record>
+
+
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="n_speciale_form">
+      <field name="name">Speciale Form</field>
+      <field name="model">nour.n_speciale</field>
+      <field name="arch" type="xml">
+      <form>
+       <group>
+       <group>
+       <field name="n_annee" string="Année"/>
+        <field name="n_resident_id" string="Résident"/>
+        <field name="n_code" string="Appartement"/>
+        <field name="n_desispeciale_id" string="Désignation cotisation"/>
+
+         </group>
+         <group>
+
+        <field name="s_apayer" string="Montant à payer"/>
+
+        <field name="s_totalverse" string="Total Reçu"/>
+        <field name="s_reste" string="Reste à payer"/>
+
+        <field name="n_obs_speciale" string="Observation"/>
+         </group>
+          </group>
+        <notebook>
+<page string="Detail des versements">
+
+ <field name="n_detailspeciale_ids">
+                            <list>
+                                <field name="s_ds_date" string="Année Paiement"/>
+                                <field name="s_ds_mois" string="Mois paiement"/>
+                                <field name="s_ds_montant" string="Montant versé"/>
+                            </list>
+
+                        </field>
+</page>
+       </notebook>
+
+
+</form>
+</field>
+</record>
+   </data>
+</odoo>
+

@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="n_desispeciale_list">
+      <field name="name">n_desispeciale List</field>
+      <field name="model">nour.n_desispeciale</field>
+      <field name="arch" type="xml">
+        <list> <!-- Utilisation de <tree> au lieu de <list> -->
+          <field name="s_designation" string="Désignation"/>
+          <field name="s_observation" string="Description"/>
+        </list>
+      </field>
+    </record>
+
+n
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="n_desispeciale_form">
+      <field name="name">Cotisation Form</field>
+      <field name="model">nour.n_desispeciale</field>
+      <field name="arch" type="xml">
+      <form>
+        <group>
+        <field name="s_designation" string="Désignation"/>
+          <field name="s_observation" string="Description"/>
+</group>
+</form>
+</field>
+</record>
+   </data>
+</odoo>
+
